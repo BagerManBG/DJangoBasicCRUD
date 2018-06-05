@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
+</head>
+<body>
+	<div class="w-100 pt-1 d-flex justify-content-end">
+		<div class="pr-4">Welcome, {{ user }}</div>
+		<div class="pr-4"><a href="/accounts/logout">Logout</a></div>
+	</div>
+
+	<h1 style="text-align: center;">Profile</h1>
+
+	<form method="post" class="ml-5">
+	    {% csrf_token %}
+
+	    <h4>ID: {{ user.id }}</h2>
+	    <table border="0">
+	    {% for field in form %}
+	    	<tr>
+		        <td>{{ field.label_tag }}</td>
+		        <td>{{ field }}</td>
+	        </tr>
+	    {% endfor %}
+	    </table>
+	    <button type="submit">Update</button>
+  	</form>
+</body>
+</html>

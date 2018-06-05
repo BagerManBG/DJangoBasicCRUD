@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List Notes</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
+</head>
+<body>
+	<div class="w-100 pt-1 d-flex justify-content-end">
+		<div class="pr-4">Welcome, <a href="/accounts/profile">{{ user }}</a></div>
+		<div class="pr-4"><a href="/accounts/logout">Logout</a></div>
+	</div>
+
+	<h1 style="text-align: center;">Your Notes</h1>
+	<ul>
+		{% for note in notes %}
+			<div class="mt-4 font-weight-bold">
+				<h3>{{ note.note_type }}</h3>
+			</div>
+			<a href="{% url 'update_note' note.id %}" style="color: #323232;">
+				<li>{{ note.note }}</li>
+			</a>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'create_note' %}" class="ml-4">New Note</a>
+</body>
+</html>
